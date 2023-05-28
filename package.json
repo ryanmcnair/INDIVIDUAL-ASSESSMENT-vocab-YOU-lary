@@ -1,5 +1,5 @@
 {
-  "name": "webpack-5.0-template",
+  "name": "Vocabulary",
   "version": "1.0.0",
   "description": "",
   "main": "public/main.js",
@@ -9,7 +9,7 @@
     "build": "webpack --mode production"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ryan McNair",
   "license": "ISC",
   "devDependencies": {
     "ajv": "^7.2.4",
