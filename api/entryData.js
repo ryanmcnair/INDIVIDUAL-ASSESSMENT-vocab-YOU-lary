@@ -2,7 +2,7 @@ import client from '../utils/client';
 
 const endpoint = client.databaseURL;
 
-const getEntry = () => new Promise((resolve, reject) => {
+const getEntries = () => new Promise((resolve, reject) => {
   fetch(`${endpoint}/entries.json`, {
     method: 'GET',
     headers: {
@@ -10,8 +10,36 @@ const getEntry = () => new Promise((resolve, reject) => {
     },
   })
     .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
+const createEntry = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/entries.json`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
     .then((data) => resolve(data))
     .catch(reject);
 });
 
-export default getEntry;
+const updateEntry = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/entries/${payload.firebaseKey}.json`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+export {
+  getEntries, createEntry, updateEntry
+};
