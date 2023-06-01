@@ -14,6 +14,18 @@ const getEntries = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getLanguageEntries = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/entries.json?orderBy="language"&equalTo="${payload}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
 const createEntry = (payload) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/entries.json`, {
     method: 'POST',
@@ -41,5 +53,5 @@ const updateEntry = (payload) => new Promise((resolve, reject) => {
 });
 
 export {
-  getEntries, createEntry, updateEntry
+  getEntries, createEntry, updateEntry, getLanguageEntries
 };

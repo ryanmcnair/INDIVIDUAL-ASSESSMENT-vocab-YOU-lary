@@ -1,17 +1,8 @@
-import clearDom from '../utils/clearDom';
+// import clearDom from '../utils/clearDom';
 import renderToDOM from '../utils/renderToDOM';
 
-const showButtonsAndCards = (array) => {
-  clearDom();
-
-  const btnString = `
-  <button type="button" class="btn btn-success">Javascript</button>
-  <button type="button" class="btn btn-danger">C#</button>
-  <button type="button" class="btn btn-warning">Python</button>
-  <button type="button" class="btn btn-success">PHP</button>
-  `;
-
-  renderToDOM('#cardButtons', btnString);
+const showCards = (array) => {
+  // clearDom();
 
   let domString = '';
   array.forEach((item) => {
@@ -31,4 +22,4 @@ const showButtonsAndCards = (array) => {
   renderToDOM('#cards', domString);
 };
 
-export default showButtonsAndCards;
+export default showCards;
