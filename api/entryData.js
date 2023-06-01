@@ -52,6 +52,18 @@ const updateEntry = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const deleteEntry = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/entries/${firebaseKey}.json`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 export {
-  getEntries, createEntry, updateEntry, getLanguageEntries
+  getEntries, createEntry, updateEntry, getLanguageEntries, deleteEntry
 };

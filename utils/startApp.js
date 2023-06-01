@@ -7,6 +7,7 @@ import formEvents from '../events/formEvents';
 import filterEvents from '../events/filterEvents';
 import showCards from '../pages/card';
 import showButtons from '../components/filterButtons';
+import cardEvents from '../events/cardEvents';
 
 const startApp = (user) => {
   getEntries().then(showCards);
@@ -17,6 +18,7 @@ const startApp = (user) => {
   formEvents(user);
   showButtons();
   filterEvents();
+  cardEvents();
 };
 
 export default startApp;

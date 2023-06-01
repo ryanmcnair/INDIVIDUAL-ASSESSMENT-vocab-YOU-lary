@@ -1,9 +1,6 @@
-// import clearDom from '../utils/clearDom';
 import renderToDOM from '../utils/renderToDOM';
 
 const showCards = (array) => {
-  // clearDom();
-
   let domString = '';
   array.forEach((item) => {
     domString += `
