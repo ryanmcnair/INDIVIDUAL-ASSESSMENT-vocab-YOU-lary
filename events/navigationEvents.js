@@ -1,10 +1,17 @@
 import { getEntries } from '../api/entryData';
-import showButtonsAndCards from '../pages/card';
+import showButtons from '../components/filterButtons';
+import showCards from '../pages/card';
 import renderForm from '../pages/form';
+import clearDom from '../utils/clearDom';
+import filterEvents from './filterEvents';
 
 const navigationEvents = () => {
   document.querySelector('#add-form').addEventListener('click', renderForm);
-  document.querySelector('#add-cards').addEventListener('click', getEntries().then(showButtonsAndCards));
+  document.querySelector('#renderCards').addEventListener('click', () => getEntries()
+    .then(clearDom())
+    .then(showButtons())
+    .then(filterEvents())
+    .then(showCards));
 };
 
 export default navigationEvents;
