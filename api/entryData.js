@@ -64,6 +64,18 @@ const deleteEntry = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getSingleEntry = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/entries/${firebaseKey}.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 export {
-  getEntries, createEntry, updateEntry, getLanguageEntries, deleteEntry
+  getEntries, createEntry, updateEntry, getLanguageEntries, deleteEntry, getSingleEntry
 };

@@ -1,6 +1,7 @@
-import { deleteEntry, getEntries } from '../api/entryData';
+import { deleteEntry, getEntries, getSingleEntry } from '../api/entryData';
 import showButtons from '../components/filterButtons';
 import showCards from '../pages/card';
+import renderForm from '../pages/form';
 import clearDom from '../utils/clearDom';
 import filterEvents from './filterEvents';
 
@@ -17,6 +18,12 @@ const cardEvents = () => {
           .then(filterEvents())
           .then(showCards));
       }
+    }
+
+    if (e.target.id.includes('update-entry')) {
+      const [, firebaseKey] = e.target.id.split('--');
+
+      getSingleEntry(firebaseKey).then(renderForm);
     }
   });
 };

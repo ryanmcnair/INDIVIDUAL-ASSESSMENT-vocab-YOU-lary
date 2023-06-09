@@ -4,7 +4,7 @@ import clearDom from '../utils/clearDom';
 const renderForm = () => {
   clearDom();
   const domstring = `
-  <h1>Make a new card</h1>
+  <h1>Form</h1>
   <br />
   <form id="formComponent">
     <div class="mb-3">
@@ -18,7 +18,7 @@ const renderForm = () => {
     <div class="mb-3">
       <label for="languageSelect" class="form-label">Language</label>
       <select id="languageSelect" class="form-select">
-        <option selected>Choose a language</option>
+        <option selected>Select a language</option>
         <option value="javascript">JavaScript</option>
         <option value="cSharp">C#</option>
         <option value="python">Python</option>

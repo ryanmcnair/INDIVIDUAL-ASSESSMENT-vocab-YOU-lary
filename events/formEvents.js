@@ -7,7 +7,7 @@ import filterEvents from './filterEvents';
 const formEvents = (user) => {
   document.querySelector('#form').addEventListener('submit', (e) => {
     e.preventDefault();
-    console.warn('clicked');
+
     const payload = {
       title: document.querySelector('#titleInput').value,
       definition: document.querySelector('#definitionInput').value,
@@ -26,6 +26,23 @@ const formEvents = (user) => {
           .then(showCards);
       });
     });
+    if (e.target.id.includes('update-entry')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      const updatePayload = {
+        title: document.querySelector('#titleInput').value,
+        definition: document.querySelector('#definitionInput').value,
+        language: document.querySelector('#languageSelect').value,
+        isPublic: true,
+        time: new Date().toLocaleString,
+        uid: user.uid,
+        firebaseKey
+      };
+      updateEntry(updatePayload).then(getEntries()
+        .then(clearDom())
+        .then(showButtons())
+        .then(filterEvents())
+        .then(showCards));
+    }
   });
 };
 
